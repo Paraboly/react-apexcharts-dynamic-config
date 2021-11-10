@@ -7,7 +7,7 @@ import "./index.css";
 import charts from './charts';
 
 const App = () => {  
-  const chart = charts.line;
+  const chart = charts.bar;
   const [options, setOptions] = React.useState<ApexCharts.ApexOptions>(chart.options);
 
   return (
@@ -17,7 +17,7 @@ const App = () => {
           options={options}
           type={chart.options.chart?.type}
           series={chart.series}
-          width="500"
+          width="1000"
         />
       </div>
       <div className="component">

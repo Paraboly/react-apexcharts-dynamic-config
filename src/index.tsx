@@ -1,5 +1,6 @@
 import ApexCharts from 'apexcharts';
 import React, { FC } from 'react';
+import DataLabels from './components/DataLabels';
 import FontSize from './components/FontSize';
 import LegendPosition from './components/LegendPosition';
 import TitleVisibility from './components/TitleVisibility';
@@ -15,6 +16,7 @@ const ReactApexDynamicConfig: FC<Props> = (args) => {
       {args.options.legend && <LegendPosition {...args} />}
       {args.options.title && <TitleVisibility {...args} />}
       {(args.options.xaxis || args.options.yaxis) && <FontSize {...args} />}
+      <DataLabels {...args}/>
     </div>
   );
 };

@@ -16,26 +16,17 @@ const charts: {
     },
     series: [44, 55, 13, 43, 22],
   },
-  line: {
+  bar: {
     series: [
       {
         name: 'Desktops',
-        data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
+        data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 120, 119, 79],
       },
     ],
     options: {
       chart: {
         height: 350,
-        type: 'line',
-        zoom: {
-          enabled: false,
-        },
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        curve: 'straight',
+        type: 'bar'
       },
       title: {
         text: 'Product Trends by Month',
@@ -47,25 +38,31 @@ const charts: {
           opacity: 0.5,
         },
       },
-      yaxis: {
-
-      },
       xaxis: {
         categories: [
-          'Jan',
-          'Feb',
-          'Mar',
+          'JanuaryJanuary',
+          'February February',
+          'March March March',
           'Apr',
           'May',
           'Jun',
           'Jul',
           'Aug',
           'Sep',
+          'Oct',
+          'Nov',
+          'Dec',
         ],
+        // labels: {
+        //   hideOverlappingLabels: false,
+        //   rotate: 270,
+        //   rotateAlways: true,
+        //   minHeight: 100
+        // }
       },
     },
   },
-  bar: {
+  horizontalBar: {
     series: [{
       data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
     }],
@@ -84,12 +81,13 @@ const charts: {
         enabled: false
       },
       xaxis: {
-        categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
+        categories: ['South Korea South Korea South Korea South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
           'United States', 'China', 'Germany'
-        ],
-        labels: {
-          offsetX: 0,
-          offsetY: 0
+        ]
+      },
+      yaxis: {
+        labels:{
+          minWidth: 600
         }
       }
     }
