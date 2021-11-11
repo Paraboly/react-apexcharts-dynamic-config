@@ -17,7 +17,7 @@ const App = () => {
           options={options}
           type={chart.options.chart?.type}
           series={chart.series}
-          width="1000"
+          width="800"
         />
       </div>
       <div className="component">

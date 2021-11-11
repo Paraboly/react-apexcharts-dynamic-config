@@ -1,5 +1,5 @@
 import { ApexOptions } from 'apexcharts';
-import React, { useState } from 'react';
+import React from 'react';
 import { Props } from '..';
 
 const fontTextToInteger = (font: string | undefined) => {
@@ -28,13 +28,11 @@ const getUpdatedOptions = (
 };
 
 const FontSize = ({ options, onChange }: Props) => {
-  const [xAxisFontSize, setXAxisFontSize] = useState(
-    fontTextToInteger(options.xaxis?.labels?.style?.fontSize) || 12
-  );
-  const [yAxisFontSize, setYAxisFontSize] = useState(
+  const xAxisFontSize =
+    fontTextToInteger(options.xaxis?.labels?.style?.fontSize) || 12;
+  const yAxisFontSize =
     fontTextToInteger((options.yaxis as ApexXAxis)?.labels?.style?.fontSize) ||
-      12
-  );
+    12;
 
   return (
     <div>
@@ -49,7 +47,6 @@ const FontSize = ({ options, onChange }: Props) => {
             value={xAxisFontSize}
             onChange={(e) => {
               const fontSize = e.target.value;
-              setXAxisFontSize(fontSize);
               onChange({ ...getUpdatedOptions(options, fontSize) });
             }}
             min="6"
@@ -68,8 +65,7 @@ const FontSize = ({ options, onChange }: Props) => {
             value={yAxisFontSize}
             onChange={(e) => {
               const fontSize = e.target.value;
-              setYAxisFontSize(e.target.value);
-              onChange({ ...getUpdatedOptions(options, fontSize, "yaxis") });
+              onChange({ ...getUpdatedOptions(options, fontSize, 'yaxis') });
             }}
             min="6"
             max="32"
