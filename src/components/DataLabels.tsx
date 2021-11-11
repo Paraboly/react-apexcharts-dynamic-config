@@ -10,30 +10,27 @@ const getUpdatedOptions = (
 ) => {
   const dataLabelOptions = { ...options.dataLabels };
   (dataLabelOptions as any).labelType = labelType;
-  if (labelType === 'none') dataLabelOptions.enabled = false;
-  else if (labelType === 'number') {
-    dataLabelOptions.enabled = true;
-    dataLabelOptions.formatter = (value) => value as number;
-  } else if (labelType === 'percent') {
-    dataLabelOptions.enabled = true;
-    dataLabelOptions.formatter = (value, { w }) => {
-      const total = w.config.series[0].data.reduce(
-        (memo: number, curr: number) => memo + curr,
-        0
-      );
+  dataLabelOptions.enabled = labelType !== 'none';
+
+  dataLabelOptions.formatter = (value, { w, seriesIndex }) => {
+    const singleDimension = typeof w.config.series[0] === 'number';
+    const dataset = singleDimension ? w.config.series : w.config.series[0].data;
+
+    if (labelType === 'number') {
+      return singleDimension ? dataset[seriesIndex] : (value as number);
+    } else if (labelType === 'percent') {
+      if (singleDimension) return (value as number).toFixed(1) + '%';
+      const total = dataset.reduce((m: number, c: number) => m + c, 0);
       return (((value as number) / total) * 100).toFixed(1) + '%';
-    };
-  } else {
-    dataLabelOptions.enabled = true;
-    dataLabelOptions.formatter = (value, { w }) => {
-      const total = w.config.series[0].data.reduce(
-        (memo: number, curr: number) => memo + curr,
-        0
-      );
-      const percent = (((value as number) / total) * 100).toFixed(1) + '%';
-      return `${percent} (${value})`;
-    };
-  }
+    } else if (labelType === 'all') {
+      const total = dataset.reduce((m: number, c: number) => m + c, 0);
+      const labelValue = singleDimension
+        ? dataset[seriesIndex]
+        : (value as number);
+      const percent = ((labelValue / total) * 100).toFixed(1) + '%';
+      return `${percent} (${labelValue})`;
+    }
+  };
 
   return {
     ...options,
@@ -51,7 +48,7 @@ const DataLabels = ({ options, onChange }: Props) => {
             type="radio"
             id={type}
             value={type}
-            name="position"
+            name="datalabel"
             checked={(options.dataLabels as any)?.labelType === type}
             onChange={(e) => {
               const selectedType = e.target.value as LabelType;
