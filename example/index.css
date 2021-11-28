@@ -5,7 +5,7 @@ html, body, #root {
     width: 100%;
 }
 
-.container {
+.radc-container {
     height: 100%;
     display: flex;
     align-items: center;
@@ -13,8 +13,29 @@ html, body, #root {
     margin-top: 20px;
 }
 
-.component {
-    border: 3px solid red;
+.radc-title {
+    margin-top: 10px;
+    box-shadow: 0px 3px 5px 5px antiquewhite;
+    background: antiquewhite;
+}
+
+.radc-component {
+    background: antiquewhite;
     margin: 10px;
     padding: 10px;
+    box-shadow: 0px 0px 5px 5px antiquewhite;
+}
+
+.radc-options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.radc-options > div {
+    flex: 1 1 50%;
+}
+
+.radc-rest {
+    margin-top: 10px;
+    text-align: right
 }

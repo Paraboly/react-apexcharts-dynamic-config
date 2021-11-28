@@ -30,8 +30,7 @@ const charts: {
       },
       plotOptions: {
         bar: {
-          horizontal: true,
-          borderRadius: 10,
+          borderRadius: 10
         },
       },
       title: {
@@ -46,8 +45,8 @@ const charts: {
       },
       yaxis: {
         labels: {
-          maxWidth: 400
-        }
+          maxWidth: 400,
+        },
       },
       xaxis: {
         categories: [
@@ -65,9 +64,9 @@ const charts: {
         ],
         labels: {
           style: {
-            fontSize: "12px"
-          }
-        }
+            fontSize: '12px',
+          },
+        },
       },
     },
   },
@@ -85,7 +84,6 @@ const charts: {
       plotOptions: {
         bar: {
           borderRadius: 4,
-          horizontal: true,
         },
       },
       dataLabels: {

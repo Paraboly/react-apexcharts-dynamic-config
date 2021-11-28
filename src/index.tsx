@@ -1,5 +1,6 @@
 import ApexCharts from 'apexcharts';
 import React, { FC, useEffect, useState } from 'react';
+import AxisLabelSize from './components/AxisLabelSize';
 import DataLabels from './components/DataLabels';
 import FontSize from './components/FontSize';
 import LegendPosition from './components/LegendPosition';
@@ -16,20 +17,32 @@ const ReactApexDynamicConfig: FC<Props> = (args) => {
     setInitialOptions,
   ] = useState<ApexCharts.ApexOptions>();
   useEffect(() => {
-    setInitialOptions({...args.options});
+    setInitialOptions({ ...args.options });
   }, []);
 
   const onReset = () => {
-    args.onChange({...JSON.parse(JSON.stringify(initialOptions as ApexCharts.ApexOptions))});
-  }
-  
+    const initialOpt: ApexCharts.ApexOptions = JSON.parse(
+      JSON.stringify(initialOptions as ApexCharts.ApexOptions)
+    );
+    args.onChange({
+      ...initialOpt,
+    });
+  };
+
   return (
-    <div>
-      {args.options.legend && <LegendPosition {...args} />}
-      {args.options.title && <TitleVisibility {...args} />}
-      {(args.options.xaxis || args.options.yaxis) && <FontSize {...args} />}
-      <DataLabels {...args} />
-      <button onClick={onReset}>Reset</button>
+    <div className="radc-wrapper">
+      <div className="radc-options">
+        {args.options.legend && <LegendPosition {...args} />}
+        {args.options.title && <TitleVisibility {...args} />}
+        {(args.options.xaxis || args.options.yaxis) && <FontSize {...args} />}
+        {(args.options.xaxis || args.options.yaxis) && (
+          <AxisLabelSize {...args} />
+        )}
+        <DataLabels {...args} />
+      </div>
+      <div className="radc-rest">
+        <button onClick={onReset}>Reset</button>
+      </div>
     </div>
   );
 };

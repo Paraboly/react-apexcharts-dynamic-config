@@ -57,11 +57,11 @@ const FontSize = ({ options, onChange }: Props) => {
       )}
       {options.yaxis && (
         <div>
-          <label htmlFor="xaxis-font-size">Y-Axis({yAxisFontSize}px):</label>
+          <label htmlFor="yaxis-font-size">Y-Axis({yAxisFontSize}px):</label>
           <input
             type="range"
-            id="xaxis-font-size"
-            name="xaxis-font-size"
+            id="yaxis-font-size"
+            name="yaxis-font-size"
             value={yAxisFontSize}
             onChange={(e) => {
               const fontSize = e.target.value;
