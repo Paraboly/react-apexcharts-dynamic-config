@@ -1,6 +1,6 @@
 import { ApexOptions } from 'apexcharts';
 import React from 'react';
-import { Props } from '..';
+import { Props, TranslationsContext } from '..';
 
 const fontTextToInteger = (font: string | undefined) => {
   if (font) return font.slice(0, font.length - 2);
@@ -28,6 +28,7 @@ const getUpdatedOptions = (
 };
 
 const FontSize = ({ options, onChange }: Props) => {
+  const translations = React.useContext(TranslationsContext);
   const xAxisFontSize =
     fontTextToInteger(options.xaxis?.labels?.style?.fontSize) || 12;
   const yAxisFontSize =
@@ -36,10 +37,12 @@ const FontSize = ({ options, onChange }: Props) => {
 
   return (
     <div>
-      <p>Font Size:</p>
+      <p>{translations.fontSize}</p>
       {options.xaxis && (
         <div>
-          <label htmlFor="xaxis-font-size">X-Axis({xAxisFontSize}px):</label>
+          <label htmlFor="xaxis-font-size">
+            {translations.xaxis}({xAxisFontSize}px):
+          </label>
           <input
             type="range"
             id="xaxis-font-size"
@@ -57,7 +60,9 @@ const FontSize = ({ options, onChange }: Props) => {
       )}
       {options.yaxis && (
         <div>
-          <label htmlFor="yaxis-font-size">Y-Axis({yAxisFontSize}px):</label>
+          <label htmlFor="yaxis-font-size">
+            {translations.yaxis}({yAxisFontSize}px):
+          </label>
           <input
             type="range"
             id="yaxis-font-size"

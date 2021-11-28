@@ -1,5 +1,5 @@
 import React from 'react';
-import { Props } from '..';
+import { Props, TranslationsContext } from '..';
 
 type LabelType = 'none' | 'number' | 'percent' | 'all';
 const types = ['none', 'number', 'percent', 'all'];
@@ -39,9 +39,10 @@ const getUpdatedOptions = (
 };
 
 const DataLabels = ({ options, onChange }: Props) => {
+  const translations = React.useContext(TranslationsContext);
   return (
     <div>
-      <p>Data Label:</p>
+      <p>{translations.dataLabels}</p>
       {types.map((type) => (
         <div key={type}>
           <input
@@ -57,7 +58,7 @@ const DataLabels = ({ options, onChange }: Props) => {
               });
             }}
           />
-          <label htmlFor={type}>{type}</label>
+          <label htmlFor={type}>{translations[type]}</label>
           <br />
         </div>
       ))}

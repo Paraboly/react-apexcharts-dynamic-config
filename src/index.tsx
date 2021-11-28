@@ -5,10 +5,16 @@ import DataLabels from './components/DataLabels';
 import FontSize from './components/FontSize';
 import LegendPosition from './components/LegendPosition';
 import TitleVisibility from './components/TitleVisibility';
+import translations from './translations';
+
+export const TranslationsContext = React.createContext<{
+  [key: string]: string;
+}>(translations);
 
 export interface Props {
   options: ApexCharts.ApexOptions;
   onChange: (updatedOpt: ApexCharts.ApexOptions) => void;
+  translations?: Record<string, string>;
 }
 
 const ReactApexDynamicConfig: FC<Props> = (args) => {
@@ -30,20 +36,22 @@ const ReactApexDynamicConfig: FC<Props> = (args) => {
   };
 
   return (
-    <div className="radc-wrapper">
-      <div className="radc-options">
-        {args.options.legend && <LegendPosition {...args} />}
-        {args.options.title && <TitleVisibility {...args} />}
-        {(args.options.xaxis || args.options.yaxis) && <FontSize {...args} />}
-        {(args.options.xaxis || args.options.yaxis) && (
-          <AxisLabelSize {...args} />
-        )}
-        <DataLabels {...args} />
+    <TranslationsContext.Provider value={args.translations || translations}>
+      <div className="radc-wrapper">
+        <div className="radc-options">
+          {args.options.legend && <LegendPosition {...args} />}
+          {args.options.title && <TitleVisibility {...args} />}
+          {(args.options.xaxis || args.options.yaxis) && <FontSize {...args} />}
+          {(args.options.xaxis || args.options.yaxis) && (
+            <AxisLabelSize {...args} />
+          )}
+          <DataLabels {...args} />
+        </div>
+        <div className="radc-rest">
+          <button onClick={onReset}>{(args.translations || translations).reset}</button>
+        </div>
       </div>
-      <div className="radc-rest">
-        <button onClick={onReset}>Reset</button>
-      </div>
-    </div>
+    </TranslationsContext.Provider>
   );
 };
 

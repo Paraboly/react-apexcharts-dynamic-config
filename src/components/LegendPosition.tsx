@@ -1,13 +1,14 @@
 import React from 'react';
-import { Props } from '..';
+import { Props, TranslationsContext } from '..';
 
 type Position = "top" | "right" | "bottom" | "left";
 const positions = ['top', 'right', 'bottom', 'left'];
 
 const LegendPosition = ({ options, onChange }: Props) => {
+  const translations = React.useContext(TranslationsContext); 
   return (
     <div>
-      <p>Legend Position:</p>
+      <p>{translations.legendPosition}</p>
       {positions.map((pos) => (
         <div key={pos}>
           <input
@@ -23,7 +24,7 @@ const LegendPosition = ({ options, onChange }: Props) => {
               });
             }}
           />
-          <label htmlFor={pos}>{pos}</label>
+          <label htmlFor={pos}>{translations[pos] as string}</label>
           <br />
         </div>
       ))}
@@ -32,3 +33,4 @@ const LegendPosition = ({ options, onChange }: Props) => {
 };
 
 export default LegendPosition;
+

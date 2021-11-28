@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Props } from '..';
+import { Props, TranslationsContext } from '..';
 
 const TitleVisibility = ({ options, onChange }: Props) => {
-  const visible = !!options.title?.text;
+  const translations = React.useContext(TranslationsContext); 
   const [prevTitleConfig, setPrevTitleConfig] = useState<ApexTitleSubtitle>();
+  const visible = !!options.title?.text;
   
   return (
     <div>
-      <p>Title Visibility:</p>
+      <p>{translations.titleVisibility}</p>
       {["hide", "show"].map((v, index) => (
         <div key={index}>
           <input
@@ -30,7 +31,7 @@ const TitleVisibility = ({ options, onChange }: Props) => {
                 }
             }}
           />
-          <label htmlFor={v}>{v}</label>
+          <label htmlFor={v}>{translations[v]}</label>
           <br />
         </div>
       ))}

@@ -1,6 +1,6 @@
 import { ApexOptions } from 'apexcharts';
 import React from 'react';
-import { Props } from '..';
+import { Props, TranslationsContext } from '..';
 
 const getUpdatedOptions = (
   options: ApexOptions,
@@ -26,15 +26,18 @@ const getUpdatedOptions = (
 };
 
 const AxisLabelSize = ({ options, onChange }: Props) => {
+  const translations = React.useContext(TranslationsContext);
   const xAxisLabelSize = options.xaxis?.labels?.maxHeight || 120;
   const yAxisLabelSize = (options.yaxis as ApexYAxis)?.labels?.maxWidth || 160;
 
   return (
     <div>
-      <p>Axis Label Size:</p>
+      <p>{translations.axisLabelSize}</p>
       {options.xaxis && !options.plotOptions?.bar?.horizontal && (
         <div>
-          <label htmlFor="xaxis-label-size">X-Axis({xAxisLabelSize}px):</label>
+          <label htmlFor="xaxis-label-size">
+            {translations.xaxis}({xAxisLabelSize}px):
+          </label>
           <input
             type="range"
             id="xaxis-label-size"
@@ -52,7 +55,9 @@ const AxisLabelSize = ({ options, onChange }: Props) => {
       )}
       {options.yaxis && (
         <div>
-          <label htmlFor="yaxis-label-size">Y-Axis({yAxisLabelSize}px):</label>
+          <label htmlFor="yaxis-label-size">
+            {translations.yaxis}({yAxisLabelSize}px):
+          </label>
           <input
             type="range"
             id="yaxis-label-size"
