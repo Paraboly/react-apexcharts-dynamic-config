@@ -15,7 +15,7 @@ const Template: Story<Props> = (args) => {
   const series = [{
     data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
   }];
-  const onOptionsChange = (newOptions) => {
+  const onOptionsChange = (newOptions: ApexCharts.ApexOptions) => {
     setOptions(newOptions);
   };
   return (
