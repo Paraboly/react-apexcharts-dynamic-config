@@ -2,12 +2,13 @@
 
 > Configure react apex chart options dynamically
 
-[![NPM](https://img.shields.io/npm/v/react-apexcharts-dynamic-config.svg)](https://www.npmjs.com/package/@paraboly/react-apexcharts-dynamic-config) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-apexcharts-dynamic-config.svg)](https://www.npmjs.com/package/@paraboly/react-apexcharts-dynamic-config) [![Netlify Status](https://api.netlify.com/api/v1/badges/ed06153b-5f15-4305-b897-22ed648b95ae/deploy-status)](https://app.netlify.com/sites/react-apexcharts-dynamic-config/deploys)
 
 | Example 1                                   |                  Example 2                  |                  Example 3                  |
 | ------------------------------------------- | :-----------------------------------------: | :-----------------------------------------: |
 | ![alt text](./example/assets/example_1.png) | ![alt text](./example/assets/example_2.png) | ![alt text](./example/assets/example_3.png) |
-
+## Demo
+>https://react-apexcharts-dynamic-config.netlify.app
 ## Install
 
 ```bash
