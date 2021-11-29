@@ -48,7 +48,9 @@ const ReactApexDynamicConfig: FC<Props> = (args) => {
           <DataLabels {...args} />
         </div>
         <div className="radc-rest">
-          <button onClick={onReset}>{(args.translations || translations).reset}</button>
+          <button onClick={onReset}>
+            {(args.translations || translations).reset}
+          </button>
         </div>
       </div>
     </TranslationsContext.Provider>

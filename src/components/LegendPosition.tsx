@@ -1,11 +1,11 @@
 import React from 'react';
 import { Props, TranslationsContext } from '..';
 
-type Position = "top" | "right" | "bottom" | "left";
+type Position = 'top' | 'right' | 'bottom' | 'left';
 const positions = ['top', 'right', 'bottom', 'left'];
 
 const LegendPosition = ({ options, onChange }: Props) => {
-  const translations = React.useContext(TranslationsContext); 
+  const translations = React.useContext(TranslationsContext);
   return (
     <div>
       <p>{translations.legendPosition}</p>
@@ -33,4 +33,3 @@ const LegendPosition = ({ options, onChange }: Props) => {
 };
 
 export default LegendPosition;
-
