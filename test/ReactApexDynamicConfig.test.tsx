@@ -44,17 +44,17 @@ const options = {
   },
 };
 
-jest.mock("react-apexcharts", () =>
+jest.mock('react-apexcharts', () =>
   jest.fn(() => {
     return null;
   })
 );
-jest.mock("apexcharts", () => ({
+jest.mock('apexcharts', () => ({
   exec: jest.fn(() => {
     return new Promise((resolve) => {
-      resolve("uri");
+      resolve('uri');
     });
-  })
+  }),
 }));
 
 describe('ReactApexDynamicConfig', () => {
