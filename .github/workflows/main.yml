@@ -31,7 +31,12 @@ jobs:
       - name: Build
         run: yarn build
 
+  publish:
+    name: Publish package on npm
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Publish
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+          uses: JS-DevTools/npm-publish@v1
+          with:
+            token: ${{ secrets.NPM_TOKEN }}
