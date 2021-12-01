@@ -2,7 +2,10 @@
 
 > Configure react apex chart options dynamically
 
-[![NPM](https://img.shields.io/npm/v/react-apexcharts-dynamic-config.svg)](https://www.npmjs.com/package/@paraboly/react-apexcharts-dynamic-config) [![Netlify Status](https://api.netlify.com/api/v1/badges/ed06153b-5f15-4305-b897-22ed648b95ae/deploy-status)](https://app.netlify.com/sites/react-apexcharts-dynamic-config/deploys)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/paraboly/react-apexcharts-dynamic-config/graphs/commit-activity)
+[![NPM](https://img.shields.io/npm/v/@paraboly/react-apexcharts-dynamic-config.svg)](https://www.npmjs.com/package/@paraboly/react-apexcharts-dynamic-config) [![Netlify Status](https://api.netlify.com/api/v1/badges/ed06153b-5f15-4305-b897-22ed648b95ae/deploy-status)](https://app.netlify.com/sites/react-apexcharts-dynamic-config/deploys)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+
 
 | Example 1                                                                                                                 |                                                         Example 2                                                         |                                                         Example 3                                                         |
 | ------------------------------------------------------------------------------------------------------------------------- | :-----------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: |
