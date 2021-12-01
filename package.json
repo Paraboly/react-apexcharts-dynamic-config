@@ -36,8 +36,8 @@
     "trailingComma": "es5",
     "endOfLine": "auto"
   },
-  "name": "react-apexcharts-dynamic-config",
-  "author": "SchemeSonic",
+  "name": "@paraboly/react-apexcharts-dynamic-config",
+  "author": "SchemeSonic@Paraboly",
   "module": "dist/react-apexcharts-dynamic-config.esm.js",
   "size-limit": [
     {
