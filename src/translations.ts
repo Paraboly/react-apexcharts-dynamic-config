@@ -14,6 +14,7 @@ const translations = {
   yaxis: 'Y-Axis',
   legendPosition: 'Legend Position',
   titleVisibility: 'Title Visibility',
+  subtitleVisibility: 'Subtitle Visibility',
   fontSize: 'FontSize',
   axisLabelSize: 'Axis Label Size',
   dataLabels: 'Data Labels',

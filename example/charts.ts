@@ -30,7 +30,7 @@ const charts: {
       },
       plotOptions: {
         bar: {
-          borderRadius: 10
+          borderRadius: 10,
         },
       },
       title: {
@@ -107,6 +107,117 @@ const charts: {
         labels: {
           minWidth: 600,
         },
+      },
+    },
+  },
+  multiBar: {
+    series: [
+      { name: 'Trifft zu ', data: [0, 2, 1, 2, 2, 3] },
+      { name: 'Trifft eher zu ', data: [2, 0, 5, 2, 2, 2] },
+      { name: 'Teils teils', data: [3, 1, 1, 1, 0, 4] },
+      { name: 'Trifft eher nicht zu', data: [4, 1, 2, 3, 2, 0] },
+      { name: 'Trifft nicht Zu', data: [0, 0, 1, 0, 0, 0] },
+      { name: 'Kann ich nicht abschätzen', data: [1, 5, 0, 1, 2, 0] },
+    ],
+    options: {
+      colors: [
+        '#3e4e06',
+        '#b2c83c',
+        '#f28b00',
+        '#0090d6',
+        '#c00000',
+        '#a6a6a6',
+        '#3e4e06',
+        '#feb018',
+        '#008ffb',
+        '#0b733a',
+        '#feb018',
+        '#ec1c39',
+        '#008ffb',
+      ],
+      subtitle: {
+        text: 'n= 55',
+        offsetY: -1,
+        style: { fontWeight: 'bold', fontFamily: 'Poppins' },
+      },
+      chart: {
+        type: 'bar',
+        stacked: false,
+        toolbar: { show: true },
+      },
+      plotOptions: { bar: { horizontal: false } },
+      legend: { fontFamily: '"Poppins", Helvetica, Arial' },
+      xaxis: {
+        categories: [
+          ['Der Weg zu Schule ist', 'zu weit'],
+          ['Ich habe kein eigens', '(verkehrstauglisches)', 'Fahrrad'],
+          ['Kann nicht Rad /', 'Roller fahren'],
+          ['Keine guten Radwege', 'vorhanden'],
+          ['Keine Haltestelle in', 'der Nähe'],
+          ['Zu lange Wartezeiten', 'für Bus und Bahn'],
+          ['Kosten für Bus und ', 'Bahn '],
+          'Keine Angabe',
+        ],
+        labels: { style: { fontFamily: '"Poppins", Helvetica, Arial' } },
+      },
+      dataLabels: {
+        style: { fontFamily: '"Poppins", Helvetica, Arial, sans-serif' },
+      },
+    },
+  },
+  horizontalMultiBar: {
+    series: [
+      { name: 'Trifft zu ', data: [0, 2, 1, 2, 2, 3] },
+      { name: 'Trifft eher zu ', data: [2, 0, 5, 2, 2, 2] },
+      { name: 'Teils teils', data: [3, 1, 1, 1, 0, 4] },
+      { name: 'Trifft eher nicht zu', data: [4, 1, 2, 3, 2, 0] },
+      { name: 'Trifft nicht Zu', data: [0, 0, 1, 0, 0, 0] },
+      { name: 'Kann ich nicht abschätzen', data: [1, 5, 0, 1, 2, 0] },
+    ],
+    options: {
+      colors: [
+        '#3e4e06',
+        '#b2c83c',
+        '#f28b00',
+        '#0090d6',
+        '#c00000',
+        '#a6a6a6',
+        '#3e4e06',
+        '#feb018',
+        '#008ffb',
+        '#0b733a',
+        '#feb018',
+        '#ec1c39',
+        '#008ffb',
+      ],
+      subtitle: {
+        text: 'n= 55',
+        offsetY: -1,
+        style: { fontWeight: 'bold', fontFamily: 'Poppins' },
+      },
+      chart: {
+        type: 'bar',
+        defaultLocale: 'en',
+        stacked: false,
+        toolbar: { show: true },
+      },
+      plotOptions: { bar: { horizontal: true } },
+      legend: { fontFamily: '"Poppins", Helvetica, Arial' },
+      xaxis: {
+        categories: [
+          ['Der Weg zu Schule ist', 'zu weit'],
+          ['Ich habe kein eigens', '(verkehrstauglisches)', 'Fahrrad'],
+          ['Kann nicht Rad /', 'Roller fahren'],
+          ['Keine guten Radwege', 'vorhanden'],
+          ['Keine Haltestelle in', 'der Nähe'],
+          ['Zu lange Wartezeiten', 'für Bus und Bahn'],
+          ['Kosten für Bus und ', 'Bahn '],
+          'Keine Angabe',
+        ],
+        labels: { style: { fontFamily: '"Poppins", Helvetica, Arial' } },
+      },
+      dataLabels: {
+        style: { fontFamily: '"Poppins", Helvetica, Arial, sans-serif' },
       },
     },
   },

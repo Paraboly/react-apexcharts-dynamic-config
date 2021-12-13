@@ -35,6 +35,7 @@ const FontSize = ({ options, onChange }: Props) => {
     fontTextToInteger((options.yaxis as ApexXAxis)?.labels?.style?.fontSize) ||
     12;
 
+  if (!options.xaxis && !options.yaxis) return null;
   return (
     <div>
       <p>{translations.fontSize}</p>

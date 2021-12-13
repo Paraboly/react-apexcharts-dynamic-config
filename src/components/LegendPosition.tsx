@@ -6,6 +6,8 @@ const positions = ['top', 'right', 'bottom', 'left'];
 
 const LegendPosition = ({ options, onChange }: Props) => {
   const translations = React.useContext(TranslationsContext);
+
+  if(!options.legend) return null;
   return (
     <div>
       <p>{translations.legendPosition}</p>

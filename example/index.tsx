@@ -7,7 +7,7 @@ import './index.css';
 import charts from './charts';
 
 const App = () => {
-  const [chartType, setChartType] = React.useState("pie");
+  const [chartType, setChartType] = React.useState("horizontalMultiBar");
   const chart = charts[chartType];
   const [options, setOptions] = React.useState<ApexCharts.ApexOptions>(
     chart.options
@@ -24,6 +24,8 @@ const App = () => {
         value={chartType}
         onChange={(e) => setChartType(e.target.value)}
       >
+        <option value="horizontalMultiBar">Horizontal Multi Bar</option>
+        <option value="multiBar">Multi Bar</option>
         <option value="pie">Pie</option>
         <option value="bar">Bar</option>
         <option value="horizontalBar">Horizontal Bar</option>

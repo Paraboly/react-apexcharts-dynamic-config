@@ -39,12 +39,10 @@ const ReactApexDynamicConfig: FC<Props> = (args) => {
     <TranslationsContext.Provider value={args.translations || translations}>
       <div className="radc-wrapper">
         <div className="radc-options">
-          {args.options.legend && <LegendPosition {...args} />}
-          {args.options.title && <TitleVisibility {...args} />}
-          {(args.options.xaxis || args.options.yaxis) && <FontSize {...args} />}
-          {(args.options.xaxis || args.options.yaxis) && (
-            <AxisLabelSize {...args} />
-          )}
+          <LegendPosition {...args} />
+          <TitleVisibility {...args} />
+          <FontSize {...args} />
+          <AxisLabelSize {...args} />
           <DataLabels {...args} />
         </div>
         <div className="radc-rest">

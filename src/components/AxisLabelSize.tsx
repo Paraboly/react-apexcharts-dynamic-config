@@ -30,6 +30,7 @@ const AxisLabelSize = ({ options, onChange }: Props) => {
   const xAxisLabelSize = options.xaxis?.labels?.maxHeight || 120;
   const yAxisLabelSize = (options.yaxis as ApexYAxis)?.labels?.maxWidth || 160;
 
+  if (!options.xaxis && !options.yaxis) return null;
   return (
     <div>
       <p>{translations.axisLabelSize}</p>
@@ -53,7 +54,8 @@ const AxisLabelSize = ({ options, onChange }: Props) => {
           <br />
         </div>
       )}
-      {options.yaxis && (
+      {(options.yaxis ||
+        (options.xaxis && options.plotOptions?.bar?.horizontal)) && (
         <div>
           <label htmlFor="yaxis-label-size">
             {translations.yaxis}({yAxisLabelSize}px):
