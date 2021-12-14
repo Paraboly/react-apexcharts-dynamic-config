@@ -1,15 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Props, TranslationsContext } from '..';
 
 const TitleVisibility = ({ options, onChange }: Props) => {
   const translations = React.useContext(TranslationsContext);
-  const [prevTitleConfig, setPrevTitleConfig] = useState<ApexTitleSubtitle>();
-  const [
-    prevSubtitleConfig,
-    setPrevSubtitleConfig,
-  ] = useState<ApexTitleSubtitle>();
   const titleVisible = !!options.title?.text;
   const subtitleVisible = !!options.subtitle?.text;
+
+  const getTitleObject = (
+    options: ApexCharts.ApexOptions,
+    type: 'title' | 'subtitle',
+    newVisibility: 'show' | 'hide'
+  ) => {
+    if (newVisibility === 'hide') {
+      return {
+        ...options,
+        ...{
+          [type]: {
+            ...options[type],
+            text: '',
+            original: options[type]?.text,
+          },
+        },
+      } as ApexCharts.ApexOptions;
+    } else {
+      return {
+        ...options,
+        ...{
+          [type]: {
+            ...options[type],
+            text: (options[type] as any)?.original,
+            original: '',
+          },
+        },
+      } as ApexCharts.ApexOptions;
+    }
+  };
 
   if (!options.title && !options.subtitle) return null;
   return (
@@ -26,16 +51,8 @@ const TitleVisibility = ({ options, onChange }: Props) => {
                 name="title-visibility"
                 checked={v === 'hide' ? !titleVisible : !!titleVisible}
                 onChange={(e) => {
-                  const newVisibility = e.target.value;
-                  if (newVisibility === 'hide') {
-                    setPrevTitleConfig({ ...options.title });
-                    onChange({
-                      ...options,
-                      ...{ title: { text: '' } },
-                    });
-                  } else {
-                    onChange({ ...options, ...{ title: prevTitleConfig } });
-                  }
+                  const newVisibility = e.target.value as 'show' | 'hide';
+                  onChange(getTitleObject(options, 'title', newVisibility));
                 }}
               />
               <label htmlFor={v}>{translations[v]}</label>
@@ -56,19 +73,8 @@ const TitleVisibility = ({ options, onChange }: Props) => {
                 name="visibility"
                 checked={v === 'hide' ? !subtitleVisible : !!subtitleVisible}
                 onChange={(e) => {
-                  const newVisibility = e.target.value;
-                  if (newVisibility === 'hide') {
-                    setPrevSubtitleConfig({ ...options.subtitle });
-                    onChange({
-                      ...options,
-                      ...{ subtitle: { text: '' } },
-                    });
-                  } else {
-                    onChange({
-                      ...options,
-                      ...{ subtitle: prevSubtitleConfig },
-                    });
-                  }
+                  const newVisibility = e.target.value as 'show' | 'hide';
+                  onChange(getTitleObject(options, 'subtitle', newVisibility));
                 }}
               />
               <label htmlFor={v}>{translations[v]}</label>
