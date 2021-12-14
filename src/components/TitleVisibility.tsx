@@ -29,7 +29,6 @@ const TitleVisibility = ({ options, onChange }: Props) => {
                   const newVisibility = e.target.value;
                   if (newVisibility === 'hide') {
                     setPrevTitleConfig({ ...options.title });
-                    delete options.title;
                     onChange({
                       ...options,
                       ...{ title: { text: '' } },
@@ -60,7 +59,6 @@ const TitleVisibility = ({ options, onChange }: Props) => {
                   const newVisibility = e.target.value;
                   if (newVisibility === 'hide') {
                     setPrevSubtitleConfig({ ...options.subtitle });
-                    delete options.subtitle;
                     onChange({
                       ...options,
                       ...{ subtitle: { text: '' } },
