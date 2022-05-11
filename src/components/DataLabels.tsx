@@ -14,21 +14,23 @@ const getUpdatedOptions = (
 
   dataLabelOptions.formatter = (value, { w, seriesIndex }) => {
     const singleDimension = typeof w.config.series[0] === 'number';
+    const decimalPlace = 0;
     const dataset = singleDimension ? w.config.series : w.config.series[0].data;
 
     if (labelType === 'number') {
       return singleDimension ? dataset[seriesIndex] : (value as number);
     } else if (labelType === 'percent') {
-      if (singleDimension) return (value as number).toFixed(1) + '%';
+      if (singleDimension) return (value as number).toFixed(decimalPlace) + '%';
       const total = dataset.reduce((m: number, c: number) => m + c, 0);
-      return (((value as number) / total) * 100).toFixed(1) + '%';
+      const percentage = ((value as number) / total) * 100;
+      return `${percentage.toFixed(decimalPlace)} %`;
     } else if (labelType === 'all') {
       const total = dataset.reduce((m: number, c: number) => m + c, 0);
       const labelValue = singleDimension
         ? dataset[seriesIndex]
         : (value as number);
-      const percent = ((labelValue / total) * 100).toFixed(1) + '%';
-      return `${percent} (${labelValue})`;
+      const percent = (labelValue / total) * 100;
+      return `${percent.toFixed(decimalPlace)}% (${labelValue})`;
     }
   };
 
@@ -40,6 +42,11 @@ const getUpdatedOptions = (
 
 const DataLabels = ({ options, onChange }: Props) => {
   const translations = React.useContext(TranslationsContext);
+  if (!options.dataLabels) {
+    options.dataLabels = { decimalPlace: 0 } as any;
+  } else if (!(options.dataLabels as any)?.decimalPlace) {
+    (options.dataLabels as any).decimalPlace = 0;
+  }
   return (
     <div>
       <p>{translations.dataLabels}</p>
